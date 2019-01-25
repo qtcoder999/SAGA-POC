@@ -27,10 +27,13 @@ const myReducer = (state = initialState, action) => {
         );
 
     case "FILTERDATA":
+    if(state.get("data")){
       state.set(
         "filteredArr",
         filterSpecial(state.get("data"), state.get("dropdownOption"))
       );
+    }
+
       break;
 
     default:

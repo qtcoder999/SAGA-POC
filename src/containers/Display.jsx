@@ -26,8 +26,6 @@ class Display extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-
-  console.log(state.toJS())
   return state.toJS();
 };
 
