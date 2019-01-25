@@ -10,12 +10,9 @@ function ApiCall() {
 
 function* ExecuteAction(action) {
   const data = yield ApiCall();
-
   yield put({ type: "SET_DATA_FROM_API", value: data });
-  yield put({ type: "SET_CATEGORY_VALUE", value: action.value })
-  yield put({ type: "FILTERDATA" });
 }
 
 export function* CatchAction() {
-  yield takeLatest("CLICK",  ExecuteAction);
+  yield takeLatest("GET_DATA_ASYNC",  ExecuteAction);
 }

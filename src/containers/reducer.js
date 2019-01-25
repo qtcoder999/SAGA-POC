@@ -7,15 +7,17 @@ const initialState = fromJS({
 });
 
 const filterSpecial = (object, str) => {
-  return object && object.data.others.filter(function(item) {
-    return item.registryName === str;
-  });
+  if (object.data.other !== "undefined") {
+    return object.data.other.filter(function(item) {
+      return item.registryName === str;
+    });
+  }
+  return {};
 };
 
 const myReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SET_CATEGORY_VALUE":
-      console.log(action.value);
       return state.set("dropdownOption", action.value);
 
     case "SET_DATA_FROM_API":
@@ -27,14 +29,10 @@ const myReducer = (state = initialState, action) => {
         );
 
     case "FILTERDATA":
-    if(state.get("data")){
-      state.set(
+      return state.set(
         "filteredArr",
         filterSpecial(state.get("data"), state.get("dropdownOption"))
       );
-    }
-
-      break;
 
     default:
       return state;

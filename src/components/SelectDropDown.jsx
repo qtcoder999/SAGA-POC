@@ -5,7 +5,7 @@ class SelectDropDown extends React.Component {
   render() {
     return (
       <div>
-        <select onMouseOver={this.props.onChangeHandler}>
+        <select onChange={this.props.onChangeHandler}>
           {this.props.registryname.map((items,i) => (
             <option key={i}>{items}</option>
           ))}
